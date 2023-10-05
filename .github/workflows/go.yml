@@ -22,7 +22,12 @@ jobs:
         go-version: '1.18'
 
     - name: Build
-      run: go build -v ./...
+      run: go build -o _build/main -v ./...
 
     - name: Test
       run: go test -v ./...
+
+    - name: Upload a Build Artifact
+      uses: actions/upload-artifact@v3.1.3
+      with:
+        path: '_build/main'
